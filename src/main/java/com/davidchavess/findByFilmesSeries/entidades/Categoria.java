@@ -1,11 +1,16 @@
 package com.davidchavess.findByFilmesSeries.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Categoria implements Serializable {
@@ -16,6 +21,10 @@ public class Categoria implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "categoria")
+	private List<Producao> producoes = new ArrayList<>();
 	
 	public Categoria() {
 		
@@ -35,5 +44,9 @@ public class Categoria implements Serializable {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}	
+	}
+	public List<Producao> getProducoes() {
+		return producoes;
+	}
+
 }

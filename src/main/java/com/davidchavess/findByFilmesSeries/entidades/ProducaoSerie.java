@@ -1,23 +1,29 @@
 package com.davidchavess.findByFilmesSeries.entidades;
 
-import java.time.Instant;
+import javax.persistence.Entity;
 
-public class Serie extends Producao{
+@Entity
+public class ProducaoSerie extends Producao{
 
 	private static final long serialVersionUID = 1L;
+	
+	private String subTitulo;
 	private Integer numeroTemporadas;
 	private Integer numeroMedioEpisodio;
 	
-	public Serie() {
+	public ProducaoSerie() {
 		
 	}
 
-	public Serie(String titulo, Instant anoLancamento, Integer duracao, Categoria categoria, Integer numeroTemporadas,
-			Integer numeroMedioEpisodio) {
-		super(titulo, anoLancamento, duracao, categoria);
+
+	public ProducaoSerie(Integer id_producao, String titulo, Integer anoLancamento, Integer duracao,
+			Categoria categoria, String subTitulo, Integer numeroTemporadas, Integer numeroMedioEpisodio) {
+		super(id_producao, titulo, anoLancamento, duracao, categoria);
+		this.subTitulo = subTitulo;
 		this.numeroTemporadas = numeroTemporadas;
 		this.numeroMedioEpisodio = numeroMedioEpisodio;
 	}
+
 
 	public Integer getNumeroTemporadas() {
 		return numeroTemporadas;
@@ -33,6 +39,14 @@ public class Serie extends Producao{
 
 	public void setNumeroMedioEpisodio(Integer numeroMedioEpisodio) {
 		this.numeroMedioEpisodio = numeroMedioEpisodio;
+	}
+
+	public String getSubTitulo() {
+		return subTitulo;
+	}
+
+	public void setSubTitulo(String subTitulo) {
+		this.subTitulo = subTitulo;
 	}
 
 }
