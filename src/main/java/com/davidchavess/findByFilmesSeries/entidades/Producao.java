@@ -2,6 +2,7 @@ package com.davidchavess.findByFilmesSeries.entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +19,15 @@ public abstract class Producao implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id_producao;
-	private String titulo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY )
+	@Column(name = "idProducao")
+	private Long id;
+	
+	private String  titulo;
 	private Integer anoLancamento;
 	private Integer duracao;
+	private String descricao;
+	private String caminhoImg;
 	
 	@ManyToOne
 	@JoinColumn( name = "categoria_id")
@@ -32,12 +37,23 @@ public abstract class Producao implements Serializable{
 		
 	}
 	
-	public Producao(Integer id_producao, String titulo, Integer anoLancamento, Integer duracao, Categoria categoria) {
-		this.id_producao = id_producao;
+	public Producao(Long id, String titulo, Integer anoLancamento, Integer duracao, Categoria categoria
+			, String descricao, String caminhoImg ) {
+		this.id = id;
 		this.titulo = titulo;
 		this.anoLancamento = anoLancamento;
 		this.duracao = duracao;
 		this.categoria = categoria;
+		this.descricao = descricao;
+		this.caminhoImg = caminhoImg;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitulo() {
@@ -70,6 +86,22 @@ public abstract class Producao implements Serializable{
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getCaminhoImg() {
+		return caminhoImg;
+	}
+
+	public void setCaminhoImg(String caminhoImg) {
+		this.caminhoImg = caminhoImg;
 	}
 		
 }

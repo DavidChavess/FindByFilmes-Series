@@ -7,23 +7,20 @@ public class ProducaoSerie extends Producao{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String subTitulo;
 	private Integer numeroTemporadas;
-	private Integer numeroMedioEpisodio;
+	private Integer episodiosPorTemporada;
 	
 	public ProducaoSerie() {
 		
 	}
 
-
-	public ProducaoSerie(Integer id_producao, String titulo, Integer anoLancamento, Integer duracao,
-			Categoria categoria, String subTitulo, Integer numeroTemporadas, Integer numeroMedioEpisodio) {
-		super(id_producao, titulo, anoLancamento, duracao, categoria);
-		this.subTitulo = subTitulo;
+	public ProducaoSerie(Long id,String titulo, Integer anoLancamento, Integer duracao, Categoria categoria,String descricao,
+		String caminhoImg, String subTitulo, Integer numeroTemporadas,Integer episodiosPorTemporada){
+		
+		super(id, titulo, anoLancamento, duracao, categoria, descricao, caminhoImg);
 		this.numeroTemporadas = numeroTemporadas;
-		this.numeroMedioEpisodio = numeroMedioEpisodio;
+		this.episodiosPorTemporada = episodiosPorTemporada;
 	}
-
 
 	public Integer getNumeroTemporadas() {
 		return numeroTemporadas;
@@ -33,20 +30,11 @@ public class ProducaoSerie extends Producao{
 		this.numeroTemporadas = numeroTemporadas;
 	}
 
-	public Integer getNumeroMedioEpisodio() {
-		return numeroMedioEpisodio;
+	public Integer getEpisodiosPorTemporada() {
+		return episodiosPorTemporada;
 	}
 
-	public void setNumeroMedioEpisodio(Integer numeroMedioEpisodio) {
-		this.numeroMedioEpisodio = numeroMedioEpisodio;
+	public void setEpisodiosPorTemporada(Integer episodiosPorTemporada) {
+		this.episodiosPorTemporada = episodiosPorTemporada;
 	}
-
-	public String getSubTitulo() {
-		return subTitulo;
-	}
-
-	public void setSubTitulo(String subTitulo) {
-		this.subTitulo = subTitulo;
-	}
-
 }

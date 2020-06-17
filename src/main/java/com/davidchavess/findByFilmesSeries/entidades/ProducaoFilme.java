@@ -12,12 +12,11 @@ public class ProducaoFilme extends Producao {
 	
 	}
 
-	public ProducaoFilme(Integer id_producao, String titulo, Integer anoLancamento, Integer duracao,
-			Categoria categoria, Boolean isCinema) {
-		super(id_producao, titulo, anoLancamento, duracao, categoria);
-		this.isCinema = isCinema;
+	public ProducaoFilme(Long id, String titulo, Integer anoLancamento, Integer duracao, 
+		Categoria categoria,String descricao, String caminhoImg, Boolean isCinema) {
+			
+		super(id, titulo, anoLancamento, duracao, categoria, descricao, caminhoImg);
 	}
-
 
 	public Boolean getIsCinema() {
 		return isCinema;
@@ -26,7 +25,6 @@ public class ProducaoFilme extends Producao {
 	public void setIsCinema(Boolean isCinema) {
 		this.isCinema = isCinema;
 	}
-	
 	
 	
 }
