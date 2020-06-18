@@ -10,9 +10,11 @@ import org.springframework.context.annotation.Profile;
 import com.davidchavess.findByFilmesSeries.entidades.Categoria;
 import com.davidchavess.findByFilmesSeries.entidades.ProducaoFilme;
 import com.davidchavess.findByFilmesSeries.entidades.ProducaoSerie;
+import com.davidchavess.findByFilmesSeries.entidades.Usuario;
 import com.davidchavess.findByFilmesSeries.repositories.CategoriaRepository;
 import com.davidchavess.findByFilmesSeries.repositories.ProducaoFilmeRepository;
 import com.davidchavess.findByFilmesSeries.repositories.ProducaoSerieRepository;
+import com.davidchavess.findByFilmesSeries.repositories.UsuarioRepository;
 
 @Configuration
 @Profile("test")
@@ -26,6 +28,9 @@ public class Instanciacao implements CommandLineRunner{
 
 	@Autowired
 	private ProducaoSerieRepository producaoSerieRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -36,7 +41,6 @@ public class Instanciacao implements CommandLineRunner{
 		c2 = new Categoria(null, "Fantasia");
 		c3 = new Categoria(null, "Terror");
 		
-		//Producao 
 		ProducaoFilme f1,f2,f3; 
 		ProducaoSerie s1;
 		
@@ -58,20 +62,12 @@ public class Instanciacao implements CommandLineRunner{
 		
 		
 		categoriaRepository.saveAll(Arrays.asList(c1,c2, c3));
-	//	producaoRepository.saveAll(Arrays.asList(f1,f2,f3, s1));
 		producaoFilmeRepository.saveAll(Arrays.asList(f1,f2,f3));
 		producaoSerieRepository.save(s1);
+		
+		Usuario u = new Usuario(null, "DavidChaves02", "1234567", "(16)99760-9338", "guariba");
+		usuarioRepository.save(u);
 
-		
-	
-
-		
-/*
-		categorias.get(1).getProducoes().addAll(Arrays.asList(producoes.get(0), producoes.get(1)));
-		categorias.get(3).getProducoes().add(producoes.get(2));
-		
-		categoriaRepository.saveAll(categorias);
-	*/	
 		
 	}
 

@@ -12,6 +12,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producao implements Serializable{
@@ -31,6 +33,7 @@ public abstract class Producao implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn( name = "categoria_id")
+	@JsonIgnore
 	private Categoria categoria;
 	
 	public Producao() {
@@ -102,6 +105,31 @@ public abstract class Producao implements Serializable{
 
 	public void setCaminhoImg(String caminhoImg) {
 		this.caminhoImg = caminhoImg;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Producao other = (Producao) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 		
 }
