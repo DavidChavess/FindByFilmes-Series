@@ -7,10 +7,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.davidchavess.findByFilmesSeries.entidades.Avaliacao;
 import com.davidchavess.findByFilmesSeries.entidades.Categoria;
 import com.davidchavess.findByFilmesSeries.entidades.ProducaoFilme;
 import com.davidchavess.findByFilmesSeries.entidades.ProducaoSerie;
 import com.davidchavess.findByFilmesSeries.entidades.Usuario;
+import com.davidchavess.findByFilmesSeries.repositories.AvaliacaoRepository;
 import com.davidchavess.findByFilmesSeries.repositories.CategoriaRepository;
 import com.davidchavess.findByFilmesSeries.repositories.ProducaoFilmeRepository;
 import com.davidchavess.findByFilmesSeries.repositories.ProducaoSerieRepository;
@@ -32,6 +34,12 @@ public class Instanciacao implements CommandLineRunner{
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	
+	@Autowired
+	private AvaliacaoRepository avaliacaoRepository;
+	
+
+	
 	@Override
 	public void run(String... args) throws Exception {
 			
@@ -65,9 +73,24 @@ public class Instanciacao implements CommandLineRunner{
 		producaoFilmeRepository.saveAll(Arrays.asList(f1,f2,f3));
 		producaoSerieRepository.save(s1);
 		
-		Usuario u = new Usuario(null, "DavidChaves02", "1234567", "(16)99760-9338", "guariba");
-		usuarioRepository.save(u);
-
+		Usuario u1 = new Usuario(null, "DavidChaves02", "1234567", "(16)99760-9338", "guariba");
+		Usuario u2 = new Usuario(null, "Teste03", "1234567", "3598-9338", "BH");
+		usuarioRepository.saveAll(Arrays.asList(u1,u2));
+				
+		Avaliacao av1 = new Avaliacao(f1, u1, 10.0f);
+		Avaliacao av2 = new Avaliacao(f2, u1, 10.0f);
+		Avaliacao av3 = new Avaliacao(f1, u2, 8.5f);
+	
+		avaliacaoRepository.saveAll(Arrays.asList(av1,av2,av3));
+		
+		u1.getAvaliacoes().addAll(Arrays.asList(av1,av2));
+		u2.getAvaliacoes().add(av3);
+		f1.getAvaliacoes().addAll(Arrays.asList(av1,av3));
+		f2.getAvaliacoes().add(av2);
+		
+		usuarioRepository.saveAll(Arrays.asList(u1,u2));
+		producaoFilmeRepository.saveAll(Arrays.asList(f1,f2));
+	
 		
 	}
 
