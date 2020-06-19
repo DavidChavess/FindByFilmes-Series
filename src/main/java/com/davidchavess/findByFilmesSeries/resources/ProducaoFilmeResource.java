@@ -23,13 +23,12 @@ public class ProducaoFilmeResource {
 	private ProducaoFilmeService service;
 	
 	@GetMapping()
-	public ResponseEntity<List<ProducaoFilmeDto>> findAll(){
-		List<ProducaoFilmeDto> lista;
-	
+	public ResponseEntity<List<ProducaoFilmeDto>> findAll(){	
 		// convertendo lista de producaoFilme em lista de producaoFilmeDto
-		lista = service.findAll().stream()
-		.map( p -> new ProducaoFilmeDto( (ProducaoFilme) p) )
-		.collect(Collectors.toList());
+		List<ProducaoFilmeDto>  lista = service.findAll()
+			.stream()
+			.map( p -> new ProducaoFilmeDto( (ProducaoFilme) p) )
+			.collect(Collectors.toList());
 		
 		return ResponseEntity.ok().body(lista);
 				
@@ -37,13 +36,13 @@ public class ProducaoFilmeResource {
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<List<ProducaoFilmeDto>> findByCategoriaId( @PathVariable Long id){
-		List<ProducaoFilmeDto> lista;
 		Categoria cat = new Categoria(id, null);
 		
 		// convertendo lista de producaoFilme em lista de producaoFilmeDto
-		lista = service.findByCategoriaId(cat).stream()
-				.map(f -> new ProducaoFilmeDto(f))
-				.collect(Collectors.toList());
+		List<ProducaoFilmeDto> lista = service.findByCategoriaId(cat)
+			.stream()
+			.map(f -> new ProducaoFilmeDto(f))
+			.collect(Collectors.toList());
 		
 		return ResponseEntity.ok().body(lista);
 		
