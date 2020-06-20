@@ -85,8 +85,8 @@ public class Instanciacao implements CommandLineRunner{
 		
 		u1.getAvaliacoes().addAll(Arrays.asList(av1,av2));
 		u2.getAvaliacoes().add(av3);
-		f1.getAvaliacoes().addAll(Arrays.asList(av1,av3));
-		f2.getAvaliacoes().add(av2);
+		f1.gAvaliacoes().addAll(Arrays.asList(av1,av3));
+		f2.gAvaliacoes().add(av2);
 		
 		usuarioRepository.saveAll(Arrays.asList(u1,u2));
 		producaoFilmeRepository.saveAll(Arrays.asList(f1,f2));

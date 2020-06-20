@@ -3,11 +3,15 @@ package com.davidchavess.findByFilmesSeries.entidades;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Avaliacao {
 
+
 	@EmbeddedId
 	private AvaliacaoItemPK id = new AvaliacaoItemPK();
+	
 	private Float nota;
 	
 	public Avaliacao() {}
@@ -25,13 +29,15 @@ public class Avaliacao {
 	public void setNota(Float nota) {
 		this.nota = nota;
 	}
-
+	
+	@JsonIgnore
 	public Producao getProducao() {
 		return id.getProducao();
 	}
 	public void setProducao(Producao producao) {
 		id.setProducao(producao);
 	}
+	@JsonIgnore
 	public Usuario getUsuario() {
 		return id.getUsuario();
 	}

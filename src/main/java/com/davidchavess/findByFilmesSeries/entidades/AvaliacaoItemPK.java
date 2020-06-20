@@ -11,10 +11,11 @@ public class AvaliacaoItemPK  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "producao_id")
 	private Producao producao;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;

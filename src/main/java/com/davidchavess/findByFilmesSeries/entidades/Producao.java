@@ -36,11 +36,11 @@ public abstract class Producao implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn( name = "categoria_id")
-	@JsonIgnore
 	private Categoria categoria;
 	
+
 	@OneToMany(mappedBy = "id.producao")
-	List<Avaliacao> avaliacoes = new ArrayList<>();
+	private List<Avaliacao> avaliacoes = new ArrayList<>();
 	
 	public Producao() {
 		
@@ -88,7 +88,7 @@ public abstract class Producao implements Serializable{
 	public void setDuracao(Integer duracao) {
 		this.duracao = duracao;
 	}
-
+	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -112,8 +112,16 @@ public abstract class Producao implements Serializable{
 	public void setCaminhoImg(String caminhoImg) {
 		this.caminhoImg = caminhoImg;
 	}
-
-	public List<Avaliacao> getAvaliacoes() {
+	
+	public List<Avaliacao> gAvaliacoes(){
 		return avaliacoes;
-	}	
+	}
+
+	public Float getNotaMedia() {
+		return 
+		avaliacoes.stream()
+		.map(a -> a.getNota())
+		.reduce( 0.0f, (n1,n2) -> n1+n2) / avaliacoes.size();
+	}
+
 }
