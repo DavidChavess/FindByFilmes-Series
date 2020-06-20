@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producao implements Serializable{
@@ -110,7 +112,7 @@ public abstract class Producao implements Serializable{
 	public void setCaminhoImg(String caminhoImg) {
 		this.caminhoImg = caminhoImg;
 	}
-	
+	@JsonIgnore
 	public List<Avaliacao> gAvaliacoes(){
 		return avaliacoes;
 	}

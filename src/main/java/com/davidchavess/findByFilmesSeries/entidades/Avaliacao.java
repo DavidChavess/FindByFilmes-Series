@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Avaliacao {
 
-
 	@EmbeddedId
 	private AvaliacaoItemPK id = new AvaliacaoItemPK();
 	
@@ -30,13 +29,13 @@ public class Avaliacao {
 		this.nota = nota;
 	}
 	
-	@JsonIgnore
 	public Producao getProducao() {
 		return id.getProducao();
 	}
 	public void setProducao(Producao producao) {
 		id.setProducao(producao);
 	}
+	
 	@JsonIgnore
 	public Usuario getUsuario() {
 		return id.getUsuario();

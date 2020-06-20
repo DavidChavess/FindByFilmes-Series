@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.davidchavess.findByFilmesSeries.dto.UsuarioDto;
-import com.davidchavess.findByFilmesSeries.entidades.Usuario;
 import com.davidchavess.findByFilmesSeries.services.UsuarioService;
 
 @RestController

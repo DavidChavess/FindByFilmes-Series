@@ -1,7 +1,10 @@
 package com.davidchavess.findByFilmesSeries.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.davidchavess.findByFilmesSeries.entidades.Avaliacao;
 import com.davidchavess.findByFilmesSeries.entidades.Usuario;
 
 public class UsuarioDto implements Serializable{
@@ -13,6 +16,8 @@ public class UsuarioDto implements Serializable{
 	private String telefone;
 	private String cidade;
 	
+	private List<Avaliacao> filmesAvaliados = new ArrayList<>();
+	
 	public UsuarioDto() {}
 
 	
@@ -21,6 +26,7 @@ public class UsuarioDto implements Serializable{
 		nomeUsuario = u.getNome();
 		telefone = u.getTelefone();
 		cidade = u.getCidade();
+		filmesAvaliados.addAll(u.getFilmesAvaliados());
 	}
 
 
@@ -63,6 +69,9 @@ public class UsuarioDto implements Serializable{
 		this.cidade = cidade;
 	}
 	
-	
+	public List<Avaliacao> getFilmesAvaliados() {
+		return filmesAvaliados;
+	}
+
 
 }

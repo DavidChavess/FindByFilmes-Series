@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
 	private String cidade;
 	
 	@OneToMany(mappedBy = "id.usuario")
-	private List<Avaliacao> avaliacoes = new ArrayList<>();
+	private List<Avaliacao> filmesAvaliados = new ArrayList<>();
 	
 	
 	public Usuario() {}
@@ -77,12 +77,9 @@ public class Usuario implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public List<Avaliacao> getAvaliacoes() {
-		return avaliacoes;
+	public List<Avaliacao> getFilmesAvaliados() {
+		return filmesAvaliados;
 	}
 
-	public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-		this.avaliacoes = avaliacoes;
-	}
-		
+	
 }
