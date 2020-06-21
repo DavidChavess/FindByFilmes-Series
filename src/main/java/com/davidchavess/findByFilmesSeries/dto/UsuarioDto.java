@@ -23,7 +23,7 @@ public class UsuarioDto implements Serializable{
 	
 	public UsuarioDto(Usuario u) {	
 		id = u.getId(); 
-		nomeUsuario = u.getNome();
+		nomeUsuario = u.getNomeUsuario();
 		telefone = u.getTelefone();
 		cidade = u.getCidade();
 		filmesAvaliados.addAll(u.getFilmesAvaliados());

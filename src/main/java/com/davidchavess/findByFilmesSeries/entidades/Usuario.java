@@ -45,11 +45,11 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
+	public String getNomeUsuario() {
 		return nomeUsuario;
 	}
 
-	public void setNome(String nomeUsuario) {
+	public void setNomeUsuario(String nomeUsuario) {
 		this.nomeUsuario = nomeUsuario;
 	}
 
