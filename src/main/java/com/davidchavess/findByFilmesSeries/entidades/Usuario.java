@@ -23,7 +23,7 @@ public class Usuario implements Serializable {
 	private String telefone;
 	private String cidade;
 	
-	@OneToMany(mappedBy = "id.usuario")
+	@OneToMany(mappedBy = "usuario")
 	private List<Avaliacao> filmesAvaliados = new ArrayList<>();
 	
 	

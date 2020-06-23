@@ -77,9 +77,9 @@ public class Instanciacao implements CommandLineRunner{
 		Usuario u2 = new Usuario(null, "Teste03", "1234567", "3598-9338", "BH");
 		usuarioRepository.saveAll(Arrays.asList(u1,u2));
 				
-		Avaliacao av1 = new Avaliacao(f1, u1, 10.0f);
-		Avaliacao av2 = new Avaliacao(f2, u1, 10.0f);
-		Avaliacao av3 = new Avaliacao(f1, u2, 8.5f);
+		Avaliacao av1 = new Avaliacao(null, f1, u1, 10.0f);
+		Avaliacao av2 = new Avaliacao(null, f2, u1, 10.0f);
+		Avaliacao av3 = new Avaliacao(null, f1, u2, 8.5f);
 	
 		avaliacaoRepository.saveAll(Arrays.asList(av1,av2,av3));
 		

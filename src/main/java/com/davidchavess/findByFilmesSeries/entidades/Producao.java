@@ -39,7 +39,7 @@ public abstract class Producao implements Serializable{
 	private Categoria categoria;
 	
 
-	@OneToMany(mappedBy = "id.producao")
+	@OneToMany(mappedBy = "producao")
 	private List<Avaliacao> avaliacoes = new ArrayList<>();
 	
 	public Producao() {

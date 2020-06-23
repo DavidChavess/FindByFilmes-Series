@@ -23,5 +23,24 @@ public class AvaliacaoService {
 		Optional<Avaliacao> av = repository.findById(id);
 		return av.orElseThrow(() -> new RuntimeException());
 	}
+	
+	public Avaliacao insert(Avaliacao a) {
+		return repository.save(a);
+	}
+	
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	public Avaliacao update(Long id, Avaliacao novaAvaliacao) {
+		Avaliacao avlAntiga = findById(id);
+		updateAvaliacao(avlAntiga, novaAvaliacao);
+		avlAntiga = insert(avlAntiga);
+		return avlAntiga;
+	}
+
+	private void updateAvaliacao(Avaliacao avlAntiga, Avaliacao novaAvaliacao) {
+		avlAntiga.setNota(novaAvaliacao.getNota());
+	}
 
 }
