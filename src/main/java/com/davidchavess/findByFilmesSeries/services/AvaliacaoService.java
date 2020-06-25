@@ -6,7 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.davidchavess.findByFilmesSeries.dto.AvaliacaoNewDto;
 import com.davidchavess.findByFilmesSeries.entidades.Avaliacao;
+import com.davidchavess.findByFilmesSeries.entidades.Producao;
+import com.davidchavess.findByFilmesSeries.entidades.Usuario;
 import com.davidchavess.findByFilmesSeries.repositories.AvaliacaoRepository;
 
 @Service
@@ -14,6 +17,12 @@ public class AvaliacaoService {
 
 	@Autowired
 	private AvaliacaoRepository repository;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@Autowired
+	private ProducaoService producaoService;
 	
 	public List<Avaliacao> findAll(){
 		return repository.findAll();
@@ -25,7 +34,10 @@ public class AvaliacaoService {
 	}
 	
 	public Avaliacao insert(Avaliacao a) {
-		return repository.save(a);
+		a = repository.save(a);		
+		usuarioService.insert(a.getUsuario());
+		producaoService.insert(a.getProducao());
+		return a; 
 	}
 	
 	public void delete(Long id) {
@@ -42,5 +54,18 @@ public class AvaliacaoService {
 	private void updateAvaliacao(Avaliacao avlAntiga, Avaliacao novaAvaliacao) {
 		avlAntiga.setNota(novaAvaliacao.getNota());
 	}
+	
+	public Avaliacao fromDto(AvaliacaoNewDto avl) {
+		
+		Usuario u = usuarioService.findById(avl.getUsuarioId());		
+		Producao p = producaoService.findById(avl.getProducaoId());
+		
+		Avaliacao a = new Avaliacao(null, p, u, avl.getNota());
+		
+		u.getAvaliacoes().add(a);
+		p.getAvaliacoes().add(a);
+		return a;
+	}
+	
 
 }

@@ -23,7 +23,7 @@ public class ProducaoSerieDto extends Producao {
 			p.getCaminhoImg()
 		);
 		
-		this.gAvaliacoes().addAll(p.gAvaliacoes());
+		this.getAvaliacoes().addAll(p.getAvaliacoes());
 		
 		this.numeroTemporadas = p.getNumeroTemporadas();
 		this.episodiosPorTemporada = p.getEpisodiosPorTemporada();

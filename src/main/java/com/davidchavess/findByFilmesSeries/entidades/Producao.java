@@ -56,6 +56,9 @@ public abstract class Producao implements Serializable{
 		this.descricao = descricao;
 		this.caminhoImg = caminhoImg;
 	}
+	public Producao(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;
@@ -112,8 +115,8 @@ public abstract class Producao implements Serializable{
 	public void setCaminhoImg(String caminhoImg) {
 		this.caminhoImg = caminhoImg;
 	}
-	@JsonIgnore
-	public List<Avaliacao> gAvaliacoes(){
+	//@JsonIgnore
+	public List<Avaliacao> getAvaliacoes(){
 		return avaliacoes;
 	}
 

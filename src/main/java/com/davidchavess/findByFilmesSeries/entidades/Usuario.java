@@ -77,7 +77,7 @@ public class Usuario implements Serializable {
 		this.cidade = cidade;
 	}
 
-	public List<Avaliacao> getFilmesAvaliados() {
+	public List<Avaliacao> getAvaliacoes() {
 		return filmesAvaliados;
 	}
 

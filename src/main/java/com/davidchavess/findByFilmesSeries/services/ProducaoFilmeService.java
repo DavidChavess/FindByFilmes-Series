@@ -22,10 +22,10 @@ public class ProducaoFilmeService {
 	}
 	
 	public ProducaoFilme findById(Long id) {
-		Optional<ProducaoFilme> cat;
+		Optional<ProducaoFilme> obj;
 		
-		cat = repository.findById(id);
-		return cat.orElseThrow(() -> new RuntimeException());
+		obj = repository.findById(id);
+		return obj.orElseThrow(() -> new RuntimeException());
 	}
 	
 	public List<ProducaoFilme> findByCategoriaId(Categoria categoria){

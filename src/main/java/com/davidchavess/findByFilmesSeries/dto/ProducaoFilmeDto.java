@@ -23,7 +23,7 @@ public class ProducaoFilmeDto extends Producao {
 			p.getCaminhoImg()
 		);
 		
-	    this.gAvaliacoes().addAll(p.gAvaliacoes());
+	    this.getAvaliacoes().addAll(p.getAvaliacoes());
 			
 	}
 

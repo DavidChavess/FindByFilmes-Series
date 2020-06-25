@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Avaliacao {
 
@@ -47,12 +49,14 @@ public class Avaliacao {
 	public void setNota(Float nota) {
 		this.nota = nota;
 	}
+	@JsonIgnore
 	public Usuario getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	@JsonIgnore
 	public Producao getProducao() {
 		return producao;
 	}
