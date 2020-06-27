@@ -52,20 +52,17 @@ public class Instanciacao implements CommandLineRunner{
 		ProducaoFilme f1,f2,f3; 
 		ProducaoSerie s1;
 		
-		f1 = new ProducaoFilme(null, "Vingadores: Guerra Infinita", 2018, 150, c1,
-			"Filmes de Super Heroi", "vingadoresGuerraInfinita.jpg", false);
+		f1 = new ProducaoFilme(null, "Vingadores: Guerra Infinita", 2018, 150, c1,"vingadoresGuerraInfinita.jpg" );
 		c1.getProducoes().add(f1);
 				
-		f2 = new ProducaoFilme(null, "John Wick: Parabelum", 2019, 124, c1, 
-			"Filme de Ação", "johnWickParabelum.jpg", false);
+		f2 = new ProducaoFilme(null, "John Wick: Parabelum", 2019, 124, c1, "johnWickParabelum.jpg");
 		c1.getProducoes().add(f2);
 		
-		f3 = new ProducaoFilme(null, "Harry Potter", 2004, 140, c2, 
-			"Filme de Fantasia", "harryPotter.jpg",	false);	
+		f3 = new ProducaoFilme(null, "Harry Potter", 2004, 140, c2, "harryPotter.jpg");	
 		c2.getProducoes().add(f3);
 		
-		s1 = new ProducaoSerie(null, "Sobrenatural", 2004, 140, c3, "Serie de Terror",
-			"sobrenatural.jpg",null, 15, 23);	
+		s1 = new ProducaoSerie(null, "Sobrenatural", 2004, 140, c3,"sobrenatural.jpg", 15, 23);	
+		
 		c3.getProducoes().add(s1);
 		
 		

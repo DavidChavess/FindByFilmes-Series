@@ -14,14 +14,14 @@ public class ProducaoSerie extends Producao{
 		
 	}
 
-	public ProducaoSerie(Long id,String titulo, Integer anoLancamento, Integer duracao, Categoria categoria,String descricao,
-		String caminhoImg, String subTitulo, Integer numeroTemporadas,Integer episodiosPorTemporada){
+	public ProducaoSerie(Long id,String titulo, Integer anoLancamento, Integer duracao, Categoria categoria,
+		String caminhoImg, Integer numeroTemporadas,Integer episodiosPorTemporada){
 		
-		super(id, titulo, anoLancamento, duracao, categoria, descricao, caminhoImg);
+		super(id, titulo, anoLancamento, duracao, categoria, caminhoImg);
 		this.numeroTemporadas = numeroTemporadas;
 		this.episodiosPorTemporada = episodiosPorTemporada;
 	}
-
+	
 	public Integer getNumeroTemporadas() {
 		return numeroTemporadas;
 	}

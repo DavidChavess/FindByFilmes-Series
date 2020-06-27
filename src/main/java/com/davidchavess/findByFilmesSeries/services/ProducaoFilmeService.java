@@ -1,18 +1,17 @@
 package com.davidchavess.findByFilmesSeries.services;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.davidchavess.findByFilmesSeries.dto.ProducaoFilmeNewDto;
 import com.davidchavess.findByFilmesSeries.entidades.Categoria;
 import com.davidchavess.findByFilmesSeries.entidades.ProducaoFilme;
 import com.davidchavess.findByFilmesSeries.repositories.ProducaoFilmeRepository;
 
 @Service
-public class ProducaoFilmeService {
+public class ProducaoFilmeService extends ProducaoService {
 
 	@Autowired
 	private ProducaoFilmeRepository repository;
@@ -20,17 +19,16 @@ public class ProducaoFilmeService {
 	public List<ProducaoFilme> findAll(){
 		return repository.findAll();
 	}
-	
-	public ProducaoFilme findById(Long id) {
-		Optional<ProducaoFilme> obj;
-		
-		obj = repository.findById(id);
-		return obj.orElseThrow(() -> new RuntimeException());
+			
+	public ProducaoFilme update(Long id, ProducaoFilme newObj) {
+		ProducaoFilme oldObj = (ProducaoFilme) findById(id);
+		updateData(newObj, oldObj);
+		return (ProducaoFilme) insert(oldObj);
 	}
 	
-	public List<ProducaoFilme> findByCategoriaId(Categoria categoria){
-		return
-		repository.findAll().stream().filter( f -> f.getCategoria().equals(categoria))
-		.collect(Collectors.toList());
+	public ProducaoFilme fromDto(ProducaoFilmeNewDto obj) {
+		Categoria c = new Categoria(obj.getCategoriaId(), null);
+		ProducaoFilme p = new ProducaoFilme(null, obj.getTitulo(), obj.getAnoLancamento(),obj.getDuracao(), c, obj.getCaminhoImg());
+		return p;	
 	}
 }

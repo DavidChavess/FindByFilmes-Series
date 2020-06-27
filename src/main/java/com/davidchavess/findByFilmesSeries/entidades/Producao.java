@@ -15,8 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Producao implements Serializable{
@@ -56,10 +54,16 @@ public abstract class Producao implements Serializable{
 		this.descricao = descricao;
 		this.caminhoImg = caminhoImg;
 	}
-	public Producao(Long id) {
+	
+	public Producao(Long id, String titulo, Integer anoLancamento, Integer duracao, Categoria categoria,String caminhoImg ) {
 		this.id = id;
+		this.titulo = titulo;
+		this.anoLancamento = anoLancamento;
+		this.duracao = duracao;
+		this.categoria = categoria;
+		this.caminhoImg = caminhoImg;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}

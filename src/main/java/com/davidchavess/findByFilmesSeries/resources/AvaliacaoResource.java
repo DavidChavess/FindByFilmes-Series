@@ -48,8 +48,9 @@ public class AvaliacaoResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Avaliacao> update(@PathVariable Long id, @RequestBody Avaliacao avl){
-		return ResponseEntity.ok().body(service.update(id, avl));
+	public ResponseEntity<Avaliacao> update(@PathVariable Long id, @RequestBody AvaliacaoNewDto avl){
+		Avaliacao a = service.fromDto(avl);
+		return ResponseEntity.ok().body(a);
 	}
 	
 }

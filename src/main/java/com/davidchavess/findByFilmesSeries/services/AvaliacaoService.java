@@ -46,14 +46,11 @@ public class AvaliacaoService {
 	
 	public Avaliacao update(Long id, Avaliacao novaAvaliacao) {
 		Avaliacao avlAntiga = findById(id);
-		updateAvaliacao(avlAntiga, novaAvaliacao);
+		avlAntiga.setNota(novaAvaliacao.getNota());
 		avlAntiga = insert(avlAntiga);
 		return avlAntiga;
 	}
 
-	private void updateAvaliacao(Avaliacao avlAntiga, Avaliacao novaAvaliacao) {
-		avlAntiga.setNota(novaAvaliacao.getNota());
-	}
 	
 	public Avaliacao fromDto(AvaliacaoNewDto avl) {
 		
